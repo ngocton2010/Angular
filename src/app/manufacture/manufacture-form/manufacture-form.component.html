@@ -1,0 +1,40 @@
+<form novalidate autocomplete="off" #form="ngForm">
+    <input type="hidden" name="maNCC" [value]="service.formData_NCC.maNCC">
+    <div class="mb-3 mt-3">
+        <label>MANUFACTURE NAME:</label>
+        <input type="text" class="form-control form-control-lg" placeholder="Name Manufacture" name="tenNCC" 
+        #tenNCC="ngModel" [(ngModel)]= "service.formData_NCC.tenNCC" required [class.invalid] = "tenNCC.invalid && tenNCC.touched">
+    </div>
+    <div class="mb-3 mt-3">
+        <label>ADDRESS:</label>
+            <input type="text" class="form-control form-control-lg" placeholder="32 Tran Phu District" name="diachi" 
+            #diachi="ngModel" [(ngModel)]= "service.formData_NCC.diachi" required [class.invalid] = "diachi.invalid && diachi.touched">
+    </div>
+    <div class="form-row">
+        <div class="mb-3 mt-3 col-sm-6">
+            <label>TEL:</label>
+            <input type="tel" class="form-control form-control-lg" placeholder="0123456789" name="sodienthoai" 
+            #sodienthoai="ngModel" [(ngModel)]= "service.formData_NCC.sodienthoai" required [class.invalid] = "sodienthoai.invalid && sodienthoai.touched">    
+        </div>
+        <div class="mb-3 mt-3  col-sm-6">
+            <label>EMAIL:</label>
+            <input type="email" class="form-control form-control-lg" placeholder="abc@gmail.com" name="email" 
+            #email="ngModel" [(ngModel)]= "service.formData_NCC.email" required [class.invalid] = "email.invalid && email.touched">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <button class="btn btn-outline-success btn-lg btn-block" (click)="insertRecord(form)" [disabled]="form.invalid">
+                ADD    
+            </button>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-outline-danger btn-lg btn-block" type="button" (click)="updateRecord(form)" [disabled]="form.invalid">
+                UPDATE    
+            </button>
+        </div>
+    </div>
+</form>
+
+
+

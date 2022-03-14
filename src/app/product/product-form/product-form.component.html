@@ -1,0 +1,45 @@
+<form novalidate autocomplete="off" #form="ngForm">
+    <input type="hidden" name="maSP" [value]="service.formData_SP.maSP">
+    <div class="mb-3 mt-3">
+        <label>PRODUCT NAME:</label>
+        <input type="text" class="form-control form-control-lg" placeholder="Name Product" name="tenSP" 
+        #tenSP="ngModel" [(ngModel)]= "service.formData_SP.tenSP" required [class.invalid] = "tenSP.invalid && tenSP.touched">
+    </div>
+    <div class="mb-3 mt-3">
+        <label>MANUFACTURE:</label>
+            <!-- <input type="text" class="form-control form-control-lg" placeholder="Home A" name="nhaCC" 
+            #nhaCC="ngModel" [(ngModel)]= "service.formData_SP.nhaCC" required [class.invalid] = "nhaCC.invalid && nhaCC.touched"> -->
+        <select class="form-control form-control-lg" name="nhaCC" 
+        #nhaCC="ngModel" [(ngModel)]= "service.formData_SP.nhaCC" required [class.invalid] = "nhaCC.invalid && nhaCC.touched">
+                <option *ngFor="let m of service_m.list_m">
+                    {{m.tenNCC}}
+                </option>
+        </select>    
+    </div>
+    <div class="form-row">
+        <div class="mb-3 mt-3 col-sm-6">
+            <label>QUANTITY:</label>
+            <input type="number" class="form-control form-control-lg" placeholder="0" name="soluong" 
+            #soluong="ngModel" [(ngModel)]= "service.formData_SP.soluong" required [class.invalid] = "soluong.invalid && soluong.touched">    
+        </div>
+        <div class="mb-3 mt-3  col-sm-6">
+            <label>Date of receipt of goods:</label>
+            <input type="datetime-local" class="form-control form-control-lg" placeholder="Friendly" name="ngayNhanHang" 
+            #ngayNhanHang="ngModel" [(ngModel)]= "service.formData_SP.ngayNhanHang" required [class.invalid] = "ngayNhanHang.invalid && ngayNhanHang.touched">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <button class="btn btn-outline-success btn-lg btn-block" (click)="insertRecord(form)" [disabled]="form.invalid">
+                ADD    
+            </button>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-outline-danger btn-lg btn-block" type="button" (click)="updateRecord(form)" [disabled]="form.invalid">
+                UPDATE    
+            </button>
+        </div>
+    </div>
+</form>
+
+

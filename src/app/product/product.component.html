@@ -1,0 +1,47 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+            <app-product-form></app-product-form>
+        </div>
+        <div class="col-md-7">
+            <div class="row">
+                <div class="row g-3 align-items-center">
+                    <div class="col-sm-5">
+                        <div class="col-auto">
+                        <label for="inputPassword6" class="col-form-label" style="margin-bottom: 10px;margin-left: 35px;">SEARCH FOR PRODUCT: </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" [(ngModel)]="searchValue" placeholder="Search" #input id="inputPassword6" aria-describedby="passwordHelpInline">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <table class="table table-hover">
+                <thead class="thead-light table-success">
+                    <tr>
+                        <th>Num</th>
+                        <th>Product Name</th>
+                        <th>Quantity</th>
+                        <th>Manafacture</th>
+                        <th>Date of receipt of goods</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of service.list | searchProduct:searchValue ,index as i ">
+                        <td>{{i+1}}</td>
+                        <td (click)="populateForm(p)">{{p.tenSP}}</td>
+                        <td (click)="populateForm(p)">{{p.soluong}}</td>
+                        <td (click)="populateForm(p)">{{p.nhaCC}}</td>
+                        <td (click)="populateForm(p)">{{p.ngayNhanHang}}</td>
+                        <td>
+                            <i class="bi bi-trash" (click)="onDelete(p.maSP)"></i>                     
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

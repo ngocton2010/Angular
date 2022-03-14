@@ -1,0 +1,43 @@
+<form novalidate autocomplete="off" #form="ngForm">
+    <input type="hidden" name="maKh" [value]="server.formData.maKh">
+    <div class="mb-3 mt-3">
+        <label>CUSTOMER NAME:</label>
+        <input type="text" class="form-control form-control-lg" placeholder="Full name" name="tenKh" 
+        #tenKh="ngModel" [(ngModel)]= "server.formData.tenKh" required [class.invalid] = "tenKh.invalid && tenKh.touched">
+    </div>
+    <div class="mb-3 mt-3">
+        <label>CUSTOMER ADDRESS:</label>
+        <input type="text" class="form-control form-control-lg" placeholder="32 Tran Phu District" name="diachi" 
+        #diachi="ngModel" [(ngModel)]= "server.formData.diachi" required [class.invalid] = "diachi.invalid && diachi.touched">
+    </div>
+    <div class="mb-3 mt-3">
+        <label>EMAIL:</label>
+            <input type="text" class="form-control form-control-lg" placeholder="abc@gmail.com" name="email" 
+            #email="ngModel" [(ngModel)]= "server.formData.email" required [class.invalid] = "email.invalid && email.touched">
+    </div>
+    <div class="form-row">
+        <div class="mb-3 mt-3 col-sm-6">
+            <label>TEL:</label>
+            <input type="text" class="form-control form-control-lg" placeholder="0123456789" name="sodienthoai" 
+            #sodienthoai="ngModel" [(ngModel)]= "server.formData.sodienthoai" required [class.invalid] = "sodienthoai.invalid && sodienthoai.touched">
+        </div>
+        <div class="mb-3 mt-3  col-sm-6">
+            <label>TYLE CUSTOMER:</label>
+            <input type="text" class="form-control form-control-lg" placeholder="Friendly" name="loaiKH" 
+            #loaiKH="ngModel" [(ngModel)]= "server.formData.loaiKH" required [class.invalid] = "loaiKH.invalid && loaiKH.touched">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <button class="btn btn-outline-success btn-lg btn-block" (click)="insertRecord(form)" [disabled]="form.invalid">
+                ADD    
+            </button>
+        </div>
+        <div class="col-sm-6">
+            <button class="btn btn-outline-danger btn-lg btn-block" type="button" (click)="updateRecord(form)" [disabled]="form.invalid">
+                UPDATE    
+            </button>
+        </div>
+    </div>
+</form>
+
